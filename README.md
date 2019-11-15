@@ -16,6 +16,5 @@ Responsibilities:
 Summary and Links to Files:
  - 
  - Data Sources
- - Notebooks:
-    - 
-    - 
+ - Notebooks
+ - Python files
