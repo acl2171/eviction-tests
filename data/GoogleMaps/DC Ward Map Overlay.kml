@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>DC Ward Map Overlay</name>
+    <description><![CDATA[This is a working version of mapping the District of Columbia's Wards]]></description>
+    <NetworkLink>
+      <name>DC Ward Map Overlay</name>
+      <Link>
+        <href><![CDATA[http://www.google.com/maps/d/u/0/kml?forcekml=1&mid=1DpJu2DbYssvxH0XsK6f6iXV6BN4]]></href>
+      </Link>
+    </NetworkLink>
+  </Document>
+</kml>
