@@ -23,7 +23,7 @@ def create_sample_dists(sample1, sample2, y_var=None):
     :return: a list of sample distributions to be used in subsequent t-tests
 
     """
-    return (plt.figure(figsize = (10, 6)), sns.distplot(sample1[y_var]), sns.distplot(sample2[y_var]))
+    return (plt.figure(figsize = (10, 6)), sns.distplot(sample1[y_var], color = 'magenta'), sns.distplot(sample2[y_var], color = 'gray'))
 
 def create_PUD_variable_and_samples(dataframe, ):
     """This function creates a pud variable and two samples.
