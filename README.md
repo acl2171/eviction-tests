@@ -22,6 +22,6 @@ Summary and Links to Files:
  - <a href='https://github.com/acl2171/eviction-tests/tree/master/python_files'>Python files</a>
     - <a href = 'https://github.com/acl2171/eviction-tests/blob/master/python_files/data_cleaning.py'>Data Cleaning</a>
     - <a href = 'https://github.com/acl2171/eviction-tests/blob/master/python_files/hypothesis_tests.py'>Hypothesis Tests</a>
-    - Visualizations
+    - <a href = 'https://github.com/acl2171/eviction-tests/blob/master/python_files/visualizations.py'>Visualizations</a>
 
  
