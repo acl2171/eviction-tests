@@ -7,6 +7,7 @@ This module contains the functions for all the visualizations for our project.
 """
 import seaborn as sns
 import matplotlib.pyplot as plt
+sns.set_context('talk')
 
 def create_sample_dists(sample1, sample2, y_var=None):
     """
@@ -19,5 +20,6 @@ def create_sample_dists(sample1, sample2, y_var=None):
 
     """
     figure = plt.figure(figsize = (10, 6))
-    return (sns.set_context('talk'), plt.figure(figsize = (10, 6)), sns.distplot(sample1[y_var], color = 'magenta'), sns.distplot(sample2[y_var], color = 'gray'))
+    sns.set_context('talk')
+    return (plt.figure(figsize = (10, 6)), sns.distplot(sample1[y_var], color = 'magenta'), plt.xlim(left = 0, right = 15), sns.distplot(sample2[y_var], color = 'gray'), plt.yticks([]))
 
