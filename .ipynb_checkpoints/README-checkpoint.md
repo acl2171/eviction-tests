@@ -14,15 +14,12 @@ Goals:
 Summary and Links to Files:
  - 
  - <a href='https://github.com/acl2171/eviction-tests/tree/master/data'>Data Sources</a>
-    - Final dataset: cleaned_for_testing
+    - Final dataset: <a href = 'https://github.com/acl2171/eviction-tests/blob/master/data/cleaned_for_testing.csv'>cleaned_for_testing </a>
  - <a href = 'https://github.com/acl2171/eviction-tests/tree/master/notebooks'>Notebooks</a>
     - <a href = 'https://github.com/acl2171/eviction-tests/blob/master/notebooks/technical_notebook.ipynb'>Technical Notebook</a>
-    - Data Cleaning
     - Exploratory Data Analysis
  - <a href='https://github.com/acl2171/eviction-tests/tree/master/python_files'>Python files</a>
-    - Data Collection
-    - Data Cleaning
-    - Hypothesis Tests
-    - Visualizations
+    - <a href = 'https://github.com/acl2171/eviction-tests/blob/master/python_files/data_cleaning.py'>Data Cleaning</a>
+    - <a href = 'https://github.com/acl2171/eviction-tests/blob/master/python_files/hypothesis_tests.py'>Hypothesis Tests</a>
  - SlideDeck (pdf)
  

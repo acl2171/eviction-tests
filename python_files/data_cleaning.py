@@ -3,9 +3,6 @@
 
 This module is for data cleaning.
 
-# Notes:
-There can be an unlimited amount of support functions.
-Each support function should have an informative name and return the partially cleaned bit of the dataset.
 """
 
 import pandas as pd
