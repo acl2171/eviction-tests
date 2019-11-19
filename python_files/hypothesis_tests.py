@@ -23,14 +23,15 @@ def create_sample_dists(sample1, sample2, y_var=None):
     :return: a list of sample distributions to be used in subsequent t-tests
 
     """
-    return (plt.figure(figsize = (10, 6)), sns.distplot(sample1[y_var], color = 'magenta'), sns.distplot(sample2[y_var], color = 'gray'))
+    return (sns.set_context('talk'), plt.figure(figsize = (10, 6)), sns.distplot(sample1[y_var], color = 'magenta'), sns.distplot(sample2[y_var], color = 'gray'))
 
 def create_PUD_variable_and_samples(dataframe, ):
     """This function creates a pud variable and two samples.
     It returns a list of two dataframes representing the two samples to be tested."""
+    # if no PUD exists(null), code 0. Code 1 if PUD exists
     dataframe['PUD'] = [0 if x==True else 1 for x in dataframe['PUD_NAME'].isna()]
-    with_PUDS = (dataframe[dataframe['PUD'] == 0])
-    no_PUDS = dataframe[dataframe['PUD']==1]
+    no_PUDS = (dataframe[dataframe['PUD'] == 0])
+    with_PUDS = dataframe[dataframe['PUD']==1]
     return [with_PUDS, no_PUDS]
 
 def hypothesis_test(sample1, sample2, variable = None, type = 'two-sided', alpha = 0.05):
@@ -57,6 +58,6 @@ def create_povsamples_from_dataframe(dataframe, variable = None):
     """
     This function creates two samples for higher poverty and lower poverty census tracts.
     """
-    poverty = dataframe[dataframe[variable] > 40.0]
+    higher = dataframe[dataframe[variable] > 40.0]
     lower = dataframe[dataframe[variable] <= 40.0]
-    return poverty, lower
+    return higher, lower
