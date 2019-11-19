@@ -33,48 +33,31 @@ def compare_pval_alpha(p_val, alpha):
         status = 'Reject'
     return status
 
+def create_PUD_variable_and_samples(dataframe, ):
+    """This function creates a pud variable and two samples.
+    It returns a list of two dataframes representing the two samples to be tested."""
+    dataframe['PUD'] = [0 if x==True else 1 for x in dataframe['PUD_NAME'].isna()]
+    with_PUDS = (dataframe[dataframe['PUD'] == 0])
+    no_PUDS = dataframe[dataframe['PUD']==1]
+    return [with_PUDS, no_PUDS]
 
-# def hypothesis_test_one(alpha = None, cleaned_data):
-#     """
-#     Describe the purpose of your hypothesis test in the docstring
-#     These functions should be able to test different levels of alpha for the hypothesis test.
-#     If a value of alpha is entered that is outside of the acceptable range, an error should be raised.
-
-#     :param alpha: the critical value of choice
-#     :param cleaned_data:
-#     :return:
-#     """
-#     # Get data for tests
-#     comparison_groups = create_sample_dists(cleaned_data=None, y_var=None, categories=[])
-
-#     ###
-#     # Main chunk of code using t-tests or z-tests, effect size, power, etc
-#     ###
-
-#     # starter code for return statement and printed results
-#     status = compare_pval_alpha(p_val, alpha)
-#     assertion = ''
-#     if status == 'Fail to reject':
-#         assertion = 'cannot'
-#     else:
-#         assertion = "can"
-#         # calculations for effect size, power, etc here as well
-
-#     print(f'Based on the p value of {p_val} and our aplha of {alpha} we {status.lower()}  the null hypothesis.'
-#           f'\n Due to these results, we  {assertion} state that there is a difference between NONE')
-
-#     if assertion == 'can':
-#         print(f"with an effect size, cohen's d, of {str(coh_d)} and power of {power}.")
-#     else:
-#         print(".")
-
-#     return status
-
+def hypothesis_test_one(sample1, sample2, variable = None, alpha = 0.05):
+     """
+    Hypothesis Test I runs a two-sample t-test from scipy.stats and returns a list of the test statistic and pvalue.
+    :param alpha: the critical value of choice (default 0.05)
+    :param sample1: dataframe
+    :param sample2: dataframe
+    :variable: the column of choice for the hypothesis test
+    :return: list of t-statistic and p-value, and string interpreting results
+    """
+    result = stats.ttest_ind(sample1[variable], sample2[variable], equal_var = False)
+    print (result)
+    if result[1] < alpha:
+        return "The p-value is less than alpha; therefore, we reject the null hypothesis."
+    else:
+        return "The p-value is greater than alpha; therefore we fail to reject the null hypothesis."
+        
+        
+        
 # def hypothesis_test_two():
-#     pass
-
-# def hypothesis_test_three():
-#     pass
-
-# def hypothesis_test_four():
 #     pass
