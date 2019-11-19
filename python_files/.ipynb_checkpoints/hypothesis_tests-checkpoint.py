@@ -33,20 +33,30 @@ def create_PUD_variable_and_samples(dataframe, ):
     no_PUDS = dataframe[dataframe['PUD']==1]
     return [with_PUDS, no_PUDS]
 
-def hypothesis_test_one(sample1, sample2, variable = None, alpha = 0.05):
+def hypothesis_test(sample1, sample2, variable = None, type = 'two-sided', alpha = 0.05):
     """Hypothesis Test I runs a two-sample t-test from scipy.stats and returns a list of the test statistic and pvalue.
     :param alpha: the critical value of choice (default 0.05)
     :param sample1: dataframe
     :param sample2: dataframe
-    :variable: the column of choice for the hypothesis test
+    :param variable: the column of choice for the hypothesis test
+    :param type: string, whether the test is one-sided or two-sided
     :return: list of t-statistic and p-value, and string interpreting results"""
     result = stats.ttest_ind(sample1[variable], sample2[variable], equal_var = False)
-    if result[1] < alpha:
+    pvalue = result[1]
+    if type=='one-sided':
+        pvalue = pvalue/2
+    else:
+        pvalue
+    if pvalue < alpha:
         return result, "The p-value is less than alpha; therefore, we reject the null hypothesis."
     else:
         return result, "The p-value is greater than alpha; therefore we fail to reject the null hypothesis."
         
         
-        
-# def hypothesis_test_two():
-#     pass
+def create_povsamples_from_dataframe(dataframe, variable = None):
+    """
+    This function creates two samples for higher poverty and lower poverty census tracts.
+    """
+    poverty = dataframe[dataframe[variable] > 40.0]
+    lower = dataframe[dataframe[variable] <= 40.0]
+    return poverty, lower
