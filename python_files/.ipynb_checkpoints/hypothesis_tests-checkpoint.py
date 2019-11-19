@@ -61,3 +61,26 @@ def create_povsamples_from_dataframe(dataframe, variable = None):
     higher = dataframe[dataframe[variable] > 40.0]
     lower = dataframe[dataframe[variable] <= 40.0]
     return higher, lower
+
+def calculate_cohen_d(sample1, sample2, variable = None):
+    """This function calculates cohen's D when given two samples.
+    :param sample1: dataframe
+    :param sample2: dataframe
+    :param variable: name of column of interest
+    :returns a floating point number"""
+    group1 = sample1[variable]
+    group2 = sample2[variable]
+    
+    diff = group1.mean() - group2.mean()
+
+    n1, n2 = len(group1), len(group2)
+    var1 = group1.var()
+    var2 = group2.var()
+
+    # Calculate the pooled threshold
+    pooled_var = (n1 * var1 + n2 * var2) / (n1 + n2)
+    
+    # Calculate Cohen's d statistic
+    d = diff / np.sqrt(pooled_var)
+    
+    return "Cohen's D: {}".format(d)
