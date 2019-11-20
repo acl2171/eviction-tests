@@ -22,6 +22,32 @@ def create_PUD_variable_and_samples(dataframe, ):
     with_PUDS = dataframe[dataframe['PUD']==1]
     return [with_PUDS, no_PUDS]
 
+def create_Pov_variable_and_samples(dataframe, ):
+    """This function creates a poverty variable and two samples.
+    It returns a list of two dataframes representing the two samples to be tested."""
+    # check summary statistics
+    pov_mean0 = dataframe['poverty-rate'].mean()
+    pov_std0 = dataframe['poverty-rate'].std()
+    
+    # establish bounds for outliers and drop outliers
+    outlier_lower = pov_mean0 - 1.5*pov_std0
+    outlier_upper = pov_mean0 + 1.5*pov_std0
+    pov_df = dataframe.loc[~((dataframe['poverty-rate'] > outlier_upper) | (dataframe['poverty-rate'] < outlier_lower))]
+    
+    # recheck summary statistics
+    pov_mean1 = pov_df['poverty-rate'].mean()
+    pov_std1 = pov_df['poverty-rate'].std()
+    
+    # add column with poverty quintiles
+    pov_df['poverty_cat'] = np.where(pov_df['poverty-rate'] > (pov_mean1 + pov_std1), 'high',
+                         np.where(pov_df['poverty-rate'] > (pov_mean1), 'somewhat high', 
+                         np.where(pov_df['poverty-rate'] < (pov_mean1 - pov_std1), 'low',
+                         np.where(pov_df['poverty-rate'] < (pov_mean1), 'somewhat low', np.nan))))
+    
+    higher = pov_df.loc[pov_df['poverty_cat'] == 'high']
+    lower = pov_df.loc[pov_df['poverty_cat'] != 'high']
+    return [higher, lower]
+
 def hypothesis_test(sample1, sample2, variable = None, type = 'two-sided', alpha = 0.05):
     """Hypothesis Test I runs a two-sample t-test from scipy.stats and returns a list of the test statistic and pvalue.
     :param alpha: the critical value of choice (default 0.05)
@@ -41,15 +67,6 @@ def hypothesis_test(sample1, sample2, variable = None, type = 'two-sided', alpha
     else:
         return result, "The p-value is greater than alpha; therefore we fail to reject the null hypothesis."
         
-        
-def create_povsamples_from_dataframe(dataframe, variable = None):
-    """
-    This function creates two samples for higher poverty and lower poverty census tracts.
-    """
-    higher = dataframe[dataframe[variable] > 40.0]
-    lower = dataframe[dataframe[variable] <= 40.0]
-    return higher, lower
-
 def calculate_cohen_d(sample1, sample2, variable = None):
     """This function calculates cohen's D when given two samples.
     :param sample1: dataframe
