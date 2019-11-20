@@ -1,5 +1,5 @@
 
-Title: South of the River: Evictions and Development in Ward 8
+Title: South of the River: Evictions, Development, and Poverty in Ward 8
  - 
 
 Contributors:
