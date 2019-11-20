@@ -18,7 +18,7 @@ Summary and Links to Files:
     - Final dataset: <a href = 'https://github.com/acl2171/eviction-tests/blob/master/data/cleaned_for_testing.csv'>cleaned_for_testing </a>
  - <a href = 'https://github.com/acl2171/eviction-tests/tree/master/notebooks'>Notebooks</a>
     - <a href = 'https://github.com/acl2171/eviction-tests/blob/master/notebooks/technical_notebook.ipynb'>Technical Notebook</a>
-    - Exploratory Data Analysis
+    - <a href = 'https://github.com/acl2171/eviction-tests/blob/master/notebooks/EDA4.ipynb'>Exploratory Data Analysis</a>
  - <a href='https://github.com/acl2171/eviction-tests/tree/master/python_files'>Python files</a>
     - <a href = 'https://github.com/acl2171/eviction-tests/blob/master/python_files/data_cleaning.py'>Data Cleaning</a>
     - <a href = 'https://github.com/acl2171/eviction-tests/blob/master/python_files/hypothesis_tests.py'>Hypothesis Tests</a>
