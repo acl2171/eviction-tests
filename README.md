@@ -13,7 +13,7 @@ Goals:
 
 Summary and Links to Files:
  - 
- - SlideDeck (pdf)
+ - <a href='https://github.com/acl2171/eviction-tests/blob/master/Slidedeck.pdf'>SlideDeck (pdf)</a>
  - <a href='https://github.com/acl2171/eviction-tests/tree/master/data'>Data Sources</a>
     - Final dataset: <a href = 'https://github.com/acl2171/eviction-tests/blob/master/data/cleaned_for_testing.csv'>cleaned_for_testing </a>
  - <a href = 'https://github.com/acl2171/eviction-tests/tree/master/notebooks'>Notebooks</a>
